@@ -2,11 +2,11 @@ const fs = require('fs');
 const path = require('path');
 const folderGirls = path.join(__dirname, 'users', 'girls');
 const folderBoys = path.join(__dirname, 'users', 'boys');
+const jessica = path.join(folderBoys, 'jessica.txt');
 const steve = path.join(folderBoys, 'steve.txt');
 const sophie = path.join(folderBoys, 'sophie.txt');
-const jessica = path.join(folderBoys, 'jessica.txt');
-const kate = path.join(folderGirls, 'kate.txt');
 const john = path.join(folderGirls, 'john.txt');
+const kate = path.join(folderGirls, 'kate.txt');
 const matt = path.join(folderGirls, 'matt.txt');
 
 
@@ -43,22 +43,22 @@ const user_Matt = {
 }
 
 
-fs.appendFile(kate, `${(JSON.stringify(user_Kate))}`, err => {
+fs.writeFile(kate, `${(JSON.stringify(user_Kate))}`, err => {
     console.log(err);
 })
-fs.appendFile(john, `${(JSON.stringify(user_John))}`, err => {
+fs.writeFile(john, `${(JSON.stringify(user_John))}`, err => {
     console.log(err);
 })
-fs.appendFile(matt, `${(JSON.stringify(user_Matt))}`, err => {
+fs.writeFile(matt, `${(JSON.stringify(user_Matt))}`, err => {
     console.log(err);
 })
-fs.appendFile(steve, `${(JSON.stringify(user_Steve))}`, err => {
+fs.writeFile(steve, `${(JSON.stringify(user_Steve))}`, err => {
     console.log(err)
 })
-fs.appendFile(sophie, `${(JSON.stringify(user_Sophie))}`, err => {
+fs.writeFile(sophie, `${(JSON.stringify(user_Sophie))}`, err => {
     console.log(err)
 })
-fs.appendFile(jessica, `${(JSON.stringify(user_Jessica))}`, err => {
+fs.writeFile(jessica, `${(JSON.stringify(user_Jessica))}`, err => {
     console.log(err)
 })
 
