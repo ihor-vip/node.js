@@ -96,8 +96,8 @@ fs.readdir(folderBoys, (err, files) => {
                 console.log(err);
                 return;
             }
-            const dataFromFile = data.toString();
-            if(dataFromFile.match('female')){
+            const info = data.toString();
+            if(info.match('female')){
                 fs.rename(path.join(folderBoys, file), path.join(folderGirls, file), err =>{
                     if (err){
                         console.log(err);
