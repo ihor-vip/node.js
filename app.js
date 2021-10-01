@@ -4,7 +4,7 @@ const folderGirls = path.join(__dirname, 'users', 'girls');
 const folderBoys = path.join(__dirname, 'users', 'boys');
 const steve = path.join(folderBoys, 'steve.txt');
 const sophie = path.join(folderBoys, 'sophie.txt');
-const ann = path.join(folderBoys, 'ann.txt');
+const jessica = path.join(folderBoys, 'jessica.txt');
 const kate = path.join(folderGirls, 'kate.txt');
 const john = path.join(folderGirls, 'john.txt');
 const matt = path.join(folderGirls, 'matt.txt');
@@ -17,6 +17,18 @@ fs.mkdir(folderBoys, {recursive: true}, err => {
     console.log(err);
 })
 
+const user_Steve = {
+    name: "Steve",
+    gender: "male"
+}
+const user_Sophie = {
+    name: "Sophie",
+    gender: "female"
+}
+const user_Jessica = {
+    name: "Jessica",
+    gender: "female"
+}
 const user_Kate = {
     name: "Kate",
     gender: "female"
@@ -29,18 +41,7 @@ const user_Matt = {
     name: "Matt",
     gender: "male"
 }
-const user_Steve = {
-    name: "Steve",
-    gender: "male"
-}
-const user_Sophie = {
-    name: "Sophie",
-    gender: "female"
-}
-const user_Ann = {
-    name: "Ann",
-    gender: "female"
-}
+
 
 fs.appendFile(kate, `${(JSON.stringify(user_Kate))}`, err => {
     console.log(err);
@@ -57,7 +58,7 @@ fs.appendFile(steve, `${(JSON.stringify(user_Steve))}`, err => {
 fs.appendFile(sophie, `${(JSON.stringify(user_Sophie))}`, err => {
     console.log(err)
 })
-fs.appendFile(ann, `${(JSON.stringify(user_Ann))}`, err => {
+fs.appendFile(jessica, `${(JSON.stringify(user_Jessica))}`, err => {
     console.log(err)
 })
 
