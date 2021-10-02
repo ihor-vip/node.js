@@ -76,7 +76,8 @@ const sort = (oldPath, gender, newPath) => {
                     return;
                 }
 
-                let userGender = JSON.parse(data.toString()).gender;
+                const userGender = JSON.parse(data.toString()).gender;
+
                 if (userGender === gender) {
                     fs.rename(path.join(oldPath, file), path.join(newPath, file), (err) => {
                         console.log(err);
