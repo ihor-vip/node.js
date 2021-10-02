@@ -1,6 +1,7 @@
 const fs = require('fs');
+const path = require('path');
 
-const usersList = [
+const users = [
     {name: "Ann", gender: "female", age: 28},
     {name: "Katie", gender: "female", age: 18},
     {name: "Jessica", gender: "female", age: 23},
@@ -13,37 +14,64 @@ const usersList = [
     {name: "Aaron", gender: "male", age: 32},
 ]
 
-function createFiles(users) {
-    for (const user of users) {
-        if (user.gender === 'male' && user.age < 20) {
-            fs.writeFile(`${__dirname}/manYounger20/${user.name}.txt`, `${user.name},${user.age}`, err => {
-                if (err) {
-                    console.log(err)
-                }
-            })
+const manOlder20 = path.join(__dirname, 'users', 'manOlder20');
+const manYounger20 = path.join(__dirname, 'users', 'manYounger20');
+const womanOlder20 = path.join(__dirname, 'users', 'womanOlder20');
+const womanYounger20 = path.join(__dirname, 'users', 'womanYounger20');
+
+
+fs.mkdir(path.join(__dirname, 'manOlder20'), {recursive: true}, (err) => {
+    if (err) {
+        console.log(err);
+        return;
+    }
+    fs.mkdir(path.join(__dirname, 'manYounger20'), {recursive: true}, (err) => {
+        if (err) {
+            console.log(err);
+            return;
         }
-        if (user.gender === 'male' && user.age > 20) {
-            fs.writeFile(`${__dirname}/manOlder20/${user.name}.txt`, `${user.name},${user.age}`, err => {
+        fs.mkdir(path.join(__dirname, 'womanOlder20'), {recursive: true}, (err) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            fs.mkdir(path.join(__dirname, 'womanYounger20'), {recursive: true}, (err) => {
                 if (err) {
-                    console.log(err)
+                    console.log(err);
                 }
-            })
-        }
-        if (user.gender === 'female' && user.age > 20) {
-            fs.writeFile(`${__dirname}/womanOlder20/${user.name}.txt`, `${user.name},${user.age}`, err => {
-                if (err) {
-                    console.log(err)
-                }
-            })
-        }
-        if (user.gender === 'female' && user.age < 20) {
-            fs.writeFile(`${__dirname}/womanYounger20/${user.name}.txt`, `${user.name},${user.age}`, err => {
-                if (err) {
-                    console.log(err)
-                }
-            })
-        }
+            });
+        });
+    });
+});
+
+for (const user of users) {
+    if (user.age > 20 && user.gender === "male") {
+        fs.writeFile(path.join(__dirname, 'manOlder20', `${user.name}.txt`), `${user.name}, ${user.age}`, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        })
+    }
+    if (user.age < 20 && user.gender === "male") {
+        fs.writeFile(path.join(__dirname, 'manYounger20', `${user.name}.txt`), `${user.name}, ${user.age}`, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        })
+    }
+    if (user.age > 20 && user.gender === "female") {
+        fs.writeFile(path.join(__dirname, 'womanOlder20', `${user.name}.txt`), `${user.name},  ${user.age}`, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        })
+    }
+
+    if (user.age < 20 && user.gender === "female") {
+        fs.writeFile(path.join(__dirname, 'womanYounger20', `${user.name}.txt`), `${user.name},  ${user.age}`, (err) => {
+            if (err) {
+                console.log(err);
+            }
+        })
     }
 }
-
-createFiles(usersList)
